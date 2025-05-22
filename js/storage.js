@@ -1,16 +1,18 @@
-function getCurrentUser() {
-    return localStorage.getItem("currentUser");
-}
-
 function getUserData() {
-    const users = JSON.parse(localStorage.getItem("users")) || {};
-    return users[getCurrentUser()] || { coins: 0 };
+    return JSON.parse(localStorage.getItem("quizUser") || '{"coins":0}');
 }
-
 function updateCoins(amount) {
-    let users = JSON.parse(localStorage.getItem("users")) || {};
-    const current = getCurrentUser();
-    if (!users[current]) users[current] = { coins: 0 };
-    users[current].coins += amount;
-    localStorage.setItem("users", JSON.stringify(users));
+    const user = getUserData();
+    user.coins += amount;
+    localStorage.setItem("quizUser", JSON.stringify(user));
+}
+function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    if (username && password) {
+        localStorage.setItem("quizUser", JSON.stringify({ username, coins: 0 }));
+        alert("Connecté!");
+    } else {
+        alert("Veuillez remplir les champs.");
+    }
 }

@@ -1,1 +1,43 @@
-body { font-family: sans-serif; }
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+.reel {
+    display: inline-block;
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #000;
+    width: 60px;
+    text-align: center;
+    background: #fff;
+}
+
+.celebrate {
+    color: green;
+    font-weight: bold;
+}
+
+.coin {
+    position: absolute;
+    top: 50px;
+    font-size: 25px;
+    animation: fall 1s ease-out forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(200px); opacity: 0; }
+}
+
+.stress {
+    background-color: red !important;
+    color: white;
+    animation: flash 0.2s alternate infinite;
+}
+
+@keyframes flash {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
+}
